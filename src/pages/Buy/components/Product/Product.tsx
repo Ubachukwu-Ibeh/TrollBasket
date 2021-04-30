@@ -1,7 +1,7 @@
 import React from "react";
 import { IProducts } from "../../../../interfaces/productsInterface";
 import getRandom from "../../../../helpers/getRandom";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 
 const Product: React.FC<IProducts> = ({
   price,
