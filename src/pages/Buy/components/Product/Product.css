@@ -1,0 +1,36 @@
+@import url(../../../../css-variables.css);
+
+.product {
+    font-size: 12px;
+    width: 100px;
+    margin: auto;
+    text-align: left;
+    color: var(--grey-text);
+    margin-top: 10px;
+}
+.product>p:nth-child(2){
+    height: 30px;
+}
+.product>p:last-child{
+    margin-top: 0;
+}
+
+.product div {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    border-radius: 5px;
+}
+
+.product>div:first-child p {
+    margin: auto;
+    text-align: center;
+    font-size: 20pt;
+    font-weight: bolder;
+    color: white;
+}
+
+.product strong {
+    font-size: 10px;
+    color: black;
+}

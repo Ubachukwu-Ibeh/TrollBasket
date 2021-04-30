@@ -1,44 +1,42 @@
-:root {
-    --border-color: #CBD6E0;
-    --search-bar-color: #EDF2F7;
-}
+@import url(../../../../css-variables.css);
 
-.home-main {
+.landingPage-main {
     width: 100%;
-    height: 100vh;
+    height: fit-content;
     display: flex;
     flex-direction: column;
 }
 
-.home-title {
+.landingPage-title {
     display: flex;
     margin: 0 auto;
     width: 100vw;
 }
 
-.home-title p {
+.landingPage-title p {
     padding: 20px 0;
     margin: auto;
     font-weight: bold;
     font-size: 14px;
 }
 
-.nav {
+nav {
     margin: auto;
     display: flex;
     width: 100vw;
     font-size: 12px;
 }
 
-.nav>div:nth-child(2) {
-    border-left: 1px solid var(--border-color);
-    border-right: 1px solid var(--border-color);
+nav>div:nth-child(2) {
+    border-left: 2px solid var(--border-color);
+    border-right: 2px solid var(--border-color);
 }
 
 
 .nav-container {
     display: flex;
     height: 50px;
+    min-height: 50px;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
 }
@@ -71,6 +69,7 @@
     height: 20vh;
     margin: auto;
     margin-top: 15px;
+    margin-bottom: 0px;
 }
 
 .info-slider * {
@@ -80,8 +79,36 @@
 .info-slider>div:nth-child(3) {
     margin: auto 10px;
 }
-.space{
+
+.space {
     width: 10px;
     min-width: 10px;
     height: 10px;
+}
+
+.options-container {
+    margin: auto;
+    margin-top: 30px;
+    display: flex;
+    width: 100vw;
+}
+
+.options-container>div {
+    margin-top: 0;
+}
+
+.products-container {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding-bottom: 100px;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    padding: 15px 0;
+    display: flex;
+    width: 100%;
+    background-color: #fff;
 }

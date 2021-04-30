@@ -24,7 +24,7 @@ const Info: React.FC<{
       className="info-main"
       style={{ backgroundColor }}>
       {question}
-      <button>{action}</button>
+      {action && <button>{action}</button>}
     </div>
   );
 };

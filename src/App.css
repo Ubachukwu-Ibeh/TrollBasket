@@ -1,7 +1,8 @@
-@import url(./pages/LandingPage/components/Home/Home.css);
-@import url(./pages/LandingPage/components/NavItem/NavItem.css);
-@import url(./pages/LandingPage/components/Info/Info.css);
-@import url(./pages/LandingPage/components/Options/Options.css);
+@import url(./pages/Buy/components/LandingPage/LandingPage.css);
+@import url(./pages/Buy/components/NavItem/NavItem.css);
+@import url(./pages/Buy/components/Info/Info.css);
+@import url(./pages/Buy/components/Options/Options.css);
+@import url(./pages/Buy/components/Product/Product.css);
 .App {
   text-align: center;
 }
