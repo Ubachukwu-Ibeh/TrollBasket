@@ -1,6 +1,6 @@
 import { ICartStore } from "../../interfaces/cartInterface";
 
 const cartStore: ICartStore = {
-  products: []
+  cart: []
 };
 export default cartStore;

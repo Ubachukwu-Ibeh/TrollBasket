@@ -3,7 +3,6 @@
 }
 
 .info-main {
-    width: calc((250vw / 3));
     min-width: calc((250vw / 3 ));
     height: 100%;
     border-radius: 10px;

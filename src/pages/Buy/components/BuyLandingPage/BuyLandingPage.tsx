@@ -18,15 +18,34 @@ import Options from "../Options/Options";
 import colors from "../../../../helpers/colors";
 import { generateProducts } from "../../../../api/products";
 import Product from "../Product/Product";
-import { IProducts } from "../../../../interfaces/productsInterface";
+import { IProduct } from "../../../../interfaces/productsInterface";
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import * as productActionTypes from "../../../../redux/actionTypes/productActionTypes";
+import { createSelectorHook } from "react-redux";
+import { getSessionStorage } from "../../../../helpers/storage";
 
-const LandingPage = () => {
-  const [products, setProducts] = useState<Array<IProducts>>([]);
+export const LocationContext = React.createContext<
+  React.Dispatch<React.SetStateAction<Array<IProduct>>> | undefined
+>(undefined);
+const useSelector = createSelectorHook();
+
+const BuyLandingPage = () => {
+  const [products, setProducts] = useState<Array<IProduct>>([]);
   const homeTitle = useRef<HTMLParagraphElement>(null);
   const search = useRef<HTMLDivElement>(null);
 
+  const currentLocation = useSelector(
+    state => state.buyLandingPageReducer.selectedLocation
+  );
+
+  const dispatch = useDispatch();
+  const storage = getSessionStorage("storage");
+
+  //Initialize UI fixes and stores
   useEffect(() => {
     let svgMargin;
+
     if (homeTitle && homeTitle.current) {
       svgMargin = window.getComputedStyle(document.getElementById("d-d")!)
         .marginLeft;
@@ -37,8 +56,37 @@ const LandingPage = () => {
         window.getComputedStyle(document.getElementById("nav")!).width
       } - (${svgMargin} * 2))`;
     }
-    setProducts(generateProducts());
+
+    const initializeProducts = (product: IProduct) => {
+      dispatch({
+        type: productActionTypes.SET_PRODUCT,
+        payload: product
+      });
+    };
+
+    if (storage) {
+      setProducts([...storage.products]);
+    } else {
+      const products = generateProducts();
+      products.forEach(product => {
+        initializeProducts(product);
+      });
+      setProducts(products);
+    }
   }, []);
+
+  //Handles search
+  const updateQuery = (str: string) => {
+    if (str.length === 0) {
+      setProducts([...storage.products]);
+      return;
+    }
+    const filtered = products.filter(
+      product =>
+        product.name?.slice(0, str.length).toLowerCase() === str.toLowerCase()
+    );
+    setProducts([...filtered]);
+  };
 
   return (
     <div className="landingPage-main">
@@ -47,13 +95,23 @@ const LandingPage = () => {
       </div>
       <div className="nav-container">
         <nav id="nav">
-          <NavItem text="Lagos" svg={<LocationIcon />} type="drop-down" />
+          <LocationContext.Provider value={setProducts}>
+            <NavItem
+              text={currentLocation}
+              svg={<LocationIcon />}
+              type="drop-down"
+            />
+          </LocationContext.Provider>
           <NavItem text="My Orders" svg={<MyOrdersIcon />} />
           <NavItem text="Cart" svg={<CartIcon />} />
         </nav>
       </div>
       <div ref={search} className="search-bar">
-        <input type="search" placeholder="search merchbuy" />
+        <input
+          type="search"
+          placeholder="search merchbuy"
+          onChange={e => updateQuery(e.target.value)}
+        />
         <SearchIcon />
       </div>
       <div className="info-slider">
@@ -95,11 +153,17 @@ const LandingPage = () => {
           description="Shops"
         />
       </div>
+      {/* Render products */}
       <div className="products-container">
-        {products.map(product => {
-          return <Product key={product.id} {...product} />;
+        {products.map((product, index) => {
+          return (
+            <Link key={product.id} to={`/details-landing-page/${product.id}`}>
+              <Product {...product} />
+            </Link>
+          );
         })}
       </div>
+
       <footer>
         <Options
           svg={<HomeIcon />}
@@ -137,4 +201,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default BuyLandingPage;

@@ -1,4 +1,4 @@
-import { IProducts } from "../interfaces/productsInterface";
+import { IProduct } from "../interfaces/productsInterface";
 import getRandom from "../helpers/getRandom";
 
 export const locations = [
@@ -39,38 +39,48 @@ export const locations = [
   "Zamfara"
 ];
 
-type IAllProducts = Array<IProducts>;
+type IAllProducts = Array<IProduct>;
 
 const getPriceRange = (): string => {
   const upperBoundary = getRandom(5_000, 100_000);
   const lowerBoundary = upperBoundary / 2;
 
-  return `₦${lowerBoundary} - ₦${upperBoundary}`;
+  return `₦${lowerBoundary.toLocaleString()} - ₦${upperBoundary.toLocaleString()}`;
 };
 
 export const generateProducts = (): IAllProducts => {
   const allProducts: IAllProducts = [];
 
-  const alphabetIcons = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const productAmount = 10;
+  const productNames = [
+    "Honda CR-V",
+    "Renault Duster",
+    "Skoda Yeti",
+    "Maruti Suzuki Ciaz",
+    "Hyundai Elantra",
+    "Maruti Suzuki S-Cross",
+    "Volvo S60 Cross Country",
+    "Hyundai i20 Active",
+    "Audi R8",
+    "Mercedes-Benz GLE Coupe"
+  ];
 
-  for (let i = 0; i < productAmount; i++) {
+  productNames.forEach(product => {
     allProducts.push({
       id: allProducts.length.toString(),
-      name: "NIKE Huararche 2019",
+      name: product,
       view_description:
         "Get comfy and comfortable with the new 2019 designer sneaker for all your events ",
-      description: "Free sample small tote bag gucci fen...",
       price: getPriceRange(),
-      location: locations.slice(getRandom(0, locations.length), 1)[0],
+      location: locations[getRandom(0, locations.length)],
       stock: getRandom(1, 50),
-      backgroundColor: `rgb(${getRandom(0, 255)},${getRandom(
-        0,
+      backgroundColor: `rgb(${getRandom(100, 255)},${getRandom(
+        100,
         255
-      )},${getRandom(0, 255)})`,
-      icon: alphabetIcons.charAt(getRandom(0, alphabetIcons.length))
+      )},${getRandom(100, 255)})`,
+      icon: product.charAt(0),
+      rating: getRandom(1, 5)
     });
-  }
+  });
 
   return allProducts;
 };

@@ -8,9 +8,7 @@
     color: var(--grey-text);
     margin-top: 10px;
 }
-.product>p:nth-child(2){
-    height: 30px;
-}
+
 .product>p:last-child{
     margin-top: 0;
 }
@@ -20,6 +18,7 @@
     height: 100px;
     display: flex;
     border-radius: 5px;
+    margin-bottom: 5px;
 }
 
 .product>div:first-child p {
@@ -31,6 +30,11 @@
 }
 
 .product strong {
-    font-size: 10px;
+    margin-bottom: 0;
+    font-size: 11px;
     color: black;
+}
+.location{
+    margin: 0;
+    margin-bottom: 5px;
 }

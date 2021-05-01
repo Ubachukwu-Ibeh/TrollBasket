@@ -1,6 +1,4 @@
-:root {
-    --border-color: #CBD6E0
-}
+@import url(../../../../css-variables.css);
 
 .nav-item-main {
     margin: auto;
@@ -25,14 +23,12 @@
     /* Ellipse 97 */
     margin: auto;
     margin-right: 0;
-    width: 24px;
-    height: 24px;
     min-width: 24px;
     min-height: 24px;
     border-radius: 50%;
     display: flex;
     /* Neutral/100 */
-    background: #EDF2F7;
+    background: var(--svg-container);
 
 }
 

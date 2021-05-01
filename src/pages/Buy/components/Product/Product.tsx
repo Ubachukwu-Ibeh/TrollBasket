@@ -1,21 +1,22 @@
-import React from "react";
-import { IProducts } from "../../../../interfaces/productsInterface";
-import getRandom from "../../../../helpers/getRandom";
-// import { useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { IProduct } from "../../../../interfaces/productsInterface";
 
-const Product: React.FC<IProducts> = ({
+const Product: React.FC<IProduct> = ({
+  id,
   price,
   stock,
   backgroundColor,
-  description,
-  icon
+  icon,
+  name,
+  location
 }) => {
   return (
     <div className="product">
       <div style={{ backgroundColor }}>
         <p>{icon}</p>
       </div>
-      <p>{description.slice(getRandom(0, description.length))}</p>
+      <strong>{name}</strong>
+      <p className="location">{location}</p>
       <strong>{price}</strong>
       <p>MOQ {stock} pieces</p>
     </div>

@@ -1,11 +1,18 @@
-@import url(./pages/Buy/components/LandingPage/LandingPage.css);
+@import url(./pages/Buy/components/BuyLandingPage/BuyLandingPage.css);
 @import url(./pages/Buy/components/NavItem/NavItem.css);
 @import url(./pages/Buy/components/Info/Info.css);
 @import url(./pages/Buy/components/Options/Options.css);
 @import url(./pages/Buy/components/Product/Product.css);
+@import url(./pages/Details/components/Navigation/Navigation.css);
+@import url(./pages/Details/components/DetailsLandingPage/DetailsLandingPage.css);
+
 .App {
   text-align: center;
 }
-::-webkit-scrollbar{
+
+::-webkit-scrollbar {
   display: none;
+}
+a{
+  text-decoration: none;
 }

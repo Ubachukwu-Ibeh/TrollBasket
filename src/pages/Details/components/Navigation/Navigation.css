@@ -1,0 +1,41 @@
+@import url(../../../../css-variables.css);
+
+.navigation-main {
+    width: 90%;
+    margin: auto;
+    display: flex;
+}
+
+.navigation-main>* {
+    margin: auto;
+    width: calc(90% / 3);
+}
+
+.icon-container {
+    background-color: var(--svg-container);
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    border-radius: 5px;
+    display: flex;
+}
+.icon-container *{
+    margin: auto;
+}
+.navigation-main>div:nth-child(3) {
+    display: flex;
+}
+
+.navigation-main>div:nth-child(3) * {
+    margin: auto;
+}
+
+.navigation-main>div:nth-child(3)>:first-child {
+    margin-right: 10px;
+}
+
+.navigation-main>div:nth-child(3)>:last-child {
+    margin-right: 0;
+    margin-left: 0;
+}

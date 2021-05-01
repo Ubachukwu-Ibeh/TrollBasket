@@ -1,12 +1,22 @@
 import React from "react";
-import LandingPage from "./pages/Buy/components/LandingPage/LandingPage";
+import BuyLandingPage from "./pages/Buy/components/BuyLandingPage/BuyLandingPage";
+import DetailsLandingPage from "./pages/Details/components/DetailsLandingPage/DetailsLandingPage";
 import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <LandingPage />
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route path="/" exact component={BuyLandingPage} />
+          <Route
+            path="/details-landing-page/:id"
+            component={DetailsLandingPage}
+          />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

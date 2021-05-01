@@ -35,7 +35,6 @@ nav>div:nth-child(2) {
 
 .nav-container {
     display: flex;
-    height: 50px;
     min-height: 50px;
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
@@ -81,7 +80,6 @@ nav>div:nth-child(2) {
 }
 
 .space {
-    width: 10px;
     min-width: 10px;
     height: 10px;
 }

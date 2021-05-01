@@ -1,10 +1,5 @@
-import { IProducts } from "./productsInterface";
+import { IProduct } from "./productsInterface";
 
 export interface ICartStore {
-  products: Array<IProducts>;
-}
-
-export interface ICartAction {
-  type: string;
-  payload?: unknown;
+  cart: Array<IProduct>;
 }
