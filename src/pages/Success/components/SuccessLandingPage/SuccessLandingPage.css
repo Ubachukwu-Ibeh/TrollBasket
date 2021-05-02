@@ -16,6 +16,7 @@
 .success-main a {
     width: 100%;
     text-decoration: none;
+    margin-bottom: 0;
 }
 
 .success-message-content {
@@ -83,7 +84,6 @@
     color: var(--success-blue);
     height: 50px;
     width: 100%;
-    margin-bottom: 0;
 }
 
 .success-grid {

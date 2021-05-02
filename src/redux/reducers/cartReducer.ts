@@ -78,6 +78,14 @@ export const cartReducer = (
       return newState;
     }
 
+    case actionTypes.CLEAR_CART: {
+      const newStorage = { ...cart_storage };
+      newStorage.cart = [];
+      const newState = { ...cart_storage, ...newStorage };
+      handleSetSessionStorage(newState);
+      return newState;
+    }
+
     default:
       return cart_storage;
   }

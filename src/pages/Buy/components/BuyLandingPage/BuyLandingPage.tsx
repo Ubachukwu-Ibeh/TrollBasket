@@ -33,6 +33,8 @@ export const LocationContext = React.createContext<
 const useSelector = createSelectorHook();
 
 const BuyLandingPage = () => {
+  window.scrollTo(0, 0);
+
   const [products, setProducts] = useState<Array<IProduct>>([]);
   const homeTitle = useRef<HTMLParagraphElement>(null);
   const search = useRef<HTMLDivElement>(null);

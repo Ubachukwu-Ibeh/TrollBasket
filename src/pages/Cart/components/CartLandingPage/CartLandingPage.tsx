@@ -6,22 +6,32 @@ import { IProduct } from "../../../../interfaces/products-interface";
 import BackArrowIcon from "../../../../assets/svg/BackArrowIcon";
 import { Link } from "react-router-dom";
 import { Routes } from "../../../../Routes";
+import { useDispatch } from "react-redux";
+import * as cartActionTypes from "../../../../redux/actionTypes/cartActionTypes";
 
 export const CartContext = React.createContext<
   React.Dispatch<React.SetStateAction<boolean>> | undefined
 >(undefined);
 
 const CartLandingPage = () => {
+  window.scrollTo(0, 0);
+
   const [, setTriggerRender] = useState(false);
   const products_storage = getSessionStorage(storage.products);
   const cart_storage = getSessionStorage(storage.cart);
+
+  const dispatch = useDispatch();
 
   const cartEmpty = cart_storage.cart.length === 0;
 
   const handleConfirmation = (e: React.TouchEvent<HTMLAnchorElement>) => {
     if (cartEmpty) {
       e.preventDefault();
+      return;
     }
+    dispatch({
+      type: cartActionTypes.CLEAR_CART
+    });
   };
 
   return (
@@ -40,7 +50,7 @@ const CartLandingPage = () => {
       </div>
       <div className="item-container">
         <CartContext.Provider value={setTriggerRender}>
-          {cart_storage.cart.map((item: IProduct) => {
+          {cart_storage.cart.reverse().map((item: IProduct) => {
             return <Item key={"cart-product" + item.id} {...item} />;
           })}
         </CartContext.Provider>

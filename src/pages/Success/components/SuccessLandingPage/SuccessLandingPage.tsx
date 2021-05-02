@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { Routes } from "../../../../Routes";
 
 const SuccessLandingPage = () => {
+  window.scrollTo(0, 0);
+
   return (
     <div className="success-main">
       <div className="success-message-content">
@@ -21,8 +23,8 @@ const SuccessLandingPage = () => {
       <div className="success-grid">
         {Array(100)
           .fill(true)
-          .map(() => (
-            <BackgroundBox />
+          .map((item, index) => (
+            <BackgroundBox key={index} />
           ))}
       </div>
     </div>

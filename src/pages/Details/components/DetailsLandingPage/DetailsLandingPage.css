@@ -36,7 +36,7 @@
 }
 
 .product-image-display {
-    padding-top: 50px;
+    margin-top: 50px;
     width: 100%;
     height: 30vh;
     display: flex;
@@ -45,7 +45,7 @@
 .product-image-display>div {
     margin: auto;
     width: 90%;
-    height: 25vh;
+    height: 90%;
     display: flex;
     background-color: var(--svg-container);
 }
@@ -64,7 +64,9 @@
     display: flex;
     padding: 15px 0;
 }
-
+.detailslandingPage-main>div:nth-child(3){
+    margin-top: 0;
+}
 .section-container>div {
     margin: auto;
     width: 90%;

@@ -28,11 +28,13 @@ const Info: React.FC<{
         {action && <button>{action}</button>}
       </div>
       {numberID === 1 && [
-        <div className="white-fade1"></div>,
-        <div className="white-fade2"></div>,
+        <div key="white-fade1" className="white-fade1"></div>,
+        <div key="white-fade2" className="white-fade2"></div>,
         ...Array(10)
           .fill(true)
-          .map((item, index) => <div className={`star${index + 1}`}></div>)
+          .map((item, index) => (
+            <div key={index} className={`star${index + 1}`}></div>
+          ))
       ]}
     </div>
   );
