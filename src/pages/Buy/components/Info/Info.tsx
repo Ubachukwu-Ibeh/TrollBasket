@@ -23,6 +23,10 @@ const Info: React.FC<{
       ref={numberID === 1 ? middleInfo : undefined}
       className="info-main"
       style={{ backgroundColor }}>
+      <div className="info-content">
+        {question}
+        {action && <button>{action}</button>}
+      </div>
       {numberID === 1 && [
         <div className="white-fade1"></div>,
         <div className="white-fade2"></div>,
@@ -30,8 +34,6 @@ const Info: React.FC<{
           .fill(true)
           .map((item, index) => <div className={`star${index + 1}`}></div>)
       ]}
-      {question}
-      {action && <button>{action}</button>}
     </div>
   );
 };

@@ -14,7 +14,7 @@
 }
 
 .landingPage-title p {
-    padding: 20px 0;
+    padding: 15px 0;
     margin: auto;
     font-weight: bold;
     font-size: 14px;
@@ -103,6 +103,7 @@ nav>div:nth-child(2) {
 }
 
 footer {
+    z-index: 2;
     position: fixed;
     bottom: 0;
     padding: 15px 0;
