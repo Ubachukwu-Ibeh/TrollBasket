@@ -12,6 +12,8 @@ import { RouteComponentProps } from "react-router-dom";
 import storage, { getSessionStorage } from "../../../../helpers/storage";
 import colors from "../../../../helpers/colors";
 
+window.scrollTo(0, 0);
+
 let timeout: NodeJS.Timeout;
 
 const DetailsLandingPage = ({ match }: RouteComponentProps<{ id: string }>) => {
