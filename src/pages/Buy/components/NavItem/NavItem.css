@@ -35,6 +35,7 @@
 }
 
 .location-dropdown {
+    z-index: 3;
     display: flex;
     flex-direction: column;
     width: 100px;
@@ -70,7 +71,7 @@
     margin: auto;
 }
 
-.cart-notification-container{
+.cart-notification-container {
     position: absolute;
 }
 

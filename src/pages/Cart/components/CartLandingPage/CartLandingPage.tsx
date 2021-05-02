@@ -16,6 +16,14 @@ const CartLandingPage = () => {
   const products_storage = getSessionStorage(storage.products);
   const cart_storage = getSessionStorage(storage.cart);
 
+  const cartEmpty = cart_storage.cart.length === 0;
+
+  const handleConfirmation = (e: React.TouchEvent<HTMLAnchorElement>) => {
+    if (cartEmpty) {
+      e.preventDefault();
+    }
+  };
+
   return (
     <div className="cartLandingPage-main">
       <div className="nav-container-details cart-nav">
@@ -47,7 +55,14 @@ const CartLandingPage = () => {
             <p>Total</p>
             <strong>N18,888</strong>
           </div>
-          <button>Checkout</button>
+          <Link to={Routes.Success} onTouchEnd={e => handleConfirmation(e)}>
+            <button
+              style={{
+                backgroundColor: cartEmpty ? "#ddd" : undefined
+              }}>
+              Checkout
+            </button>
+          </Link>
         </div>
       </div>
       <div className="recently-viewed">

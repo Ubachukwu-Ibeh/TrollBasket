@@ -5,6 +5,12 @@
     display: flex;
     flex-direction: column;
     background-color: var(--background);
+    overflow-anchor: none;
+}
+
+.cartLandingPage-main a {
+    width: 100%;
+    text-decoration: none;
 }
 
 .cart-nav>div:first-child {

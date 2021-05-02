@@ -25,6 +25,14 @@
     margin: auto;
 }
 
+.navigation-main>div:nth-child(1) {
+    margin-left: 0;
+}
+
+.navigation-main>div:nth-child(3) {
+    margin-right: 0;
+}
+
 .navigation-main>div:nth-child(3) {
     display: flex;
 }

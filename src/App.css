@@ -7,6 +7,7 @@
 @import url(./pages/Details/components/DetailsLandingPage/DetailsLandingPage.css);
 @import url(./pages/Cart/components/Item/Item.css);
 @import url(./pages/Cart/components/CartLandingPage/CartLandingPage.css);
+@import url(./pages/Success/components/SuccessLandingPage/SuccessLandingPage.css);
 
 .App {
   text-align: center;

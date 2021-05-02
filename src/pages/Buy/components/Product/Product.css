@@ -9,7 +9,7 @@
     margin-top: 10px;
 }
 
-.product>p:last-child{
+.product>p:last-child {
     margin-top: 0;
 }
 
@@ -34,7 +34,8 @@
     font-size: 11px;
     color: black;
 }
-.location{
+
+.location {
     margin: 0;
     margin-bottom: 5px;
 }

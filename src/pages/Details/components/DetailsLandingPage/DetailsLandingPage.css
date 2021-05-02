@@ -33,6 +33,7 @@
     flex-direction: column;
     background-color: var(--background);
     padding-bottom: 100px;
+    overflow-anchor: none;
 }
 
 .product-image-display {

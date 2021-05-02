@@ -2,6 +2,7 @@ import React from "react";
 import BuyLandingPage from "./pages/Buy/components/BuyLandingPage/BuyLandingPage";
 import DetailsLandingPage from "./pages/Details/components/DetailsLandingPage/DetailsLandingPage";
 import CartLandingPage from "./pages/Cart/components/CartLandingPage/CartLandingPage";
+import SuccessLandingPage from "./pages/Success/components/SuccessLandingPage/SuccessLandingPage";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Routes } from "./Routes";
@@ -17,6 +18,7 @@ function App() {
             component={DetailsLandingPage}
           />
           <Route path={Routes.Cart} component={CartLandingPage} />
+          <Route path={Routes.Success} component={SuccessLandingPage} />
         </Switch>
       </div>
     </Router>

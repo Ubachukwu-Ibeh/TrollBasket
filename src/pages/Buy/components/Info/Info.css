@@ -3,21 +3,26 @@
 }
 
 .info-main {
-    min-width: calc((250vw / 3 ));
+    min-width: calc((250vw / 3));
     height: 100%;
     border-radius: 10px;
     display: flex;
     text-align: left;
     font-weight: bold;
     color: white;
+    position: relative;
+    overflow: hidden;
 }
 
 .info-main * {
     margin: auto;
+    z-index: 2;
 }
-.info-main p{
+
+.info-main p {
     font-size: 12px;
 }
+
 .info-main button {
     height: 31px;
     width: 91px;
@@ -26,4 +31,194 @@
     border-radius: 4px;
     color: white;
     font-size: 10px;
+}
+
+/*Graphics*/
+.white-fade1 {
+    /* Rectangle 405 */
+
+    position: absolute;
+    width: 76.87px;
+    height: 250.85px;
+    left: 50px;
+    top: -65.47px;
+
+    background: linear-gradient(179.33deg, #0350BB 0.57%, rgba(3, 80, 187, 0) 114.02%);
+    opacity: 0.3;
+    transform: matrix(0.82, -0.32, 0.76, 0.9, 0, 0);
+
+}
+
+.white-fade2 {
+    /* Rectangle 406 */
+
+    position: absolute;
+    width: 76.87px;
+    height: 219.2px;
+    left: calc((250vw / 3) - 70px);
+    top: 0px;
+
+    background: linear-gradient(179.33deg, #0350BB 0.57%, rgba(3, 80, 187, 0) 114.02%);
+    opacity: 0.3;
+    transform: matrix(-0.82, 0.32, -0.76, -0.9, 0, 0);
+
+}
+
+.star1 {
+    /* Ellipse 94 */
+
+    position: absolute;
+    width: 1.7px;
+    height: 1.7px;
+    left: 1.26px;
+    top: 56.6px;
+
+    /* Red/Light_1 */
+    background: #FF705E;
+    opacity: 0.84;
+    transform: rotate(43deg);
+
+}
+
+.star2 {
+    /* Ellipse 94 */
+
+    position: absolute;
+    width: 2.28px;
+    height: 2.28px;
+    left: 14.26px;
+    top: 108.2px;
+
+    /* Orange/Main */
+    background: #EE6F44;
+    transform: rotate(105deg);
+
+}
+
+.star3 {
+    /* Ellipse 94 */
+
+    position: absolute;
+    width: 2.1px;
+    height: 2.1px;
+    left: 56.26px;
+    top: 16px;
+
+    /* Green/light_1 */
+    background: #07D571;
+    opacity: 0.72;
+    transform: rotate(-18deg);
+
+}
+
+.star4 {
+    /* Ellipse 94 */
+
+    position: absolute;
+    width: 2.12px;
+    height: 2.12px;
+    left: 135.26px;
+    top: 78.4px;
+
+    /* Yellow/Main */
+    background: #FFC042;
+    opacity: 0.82;
+    transform: rotate(92deg);
+
+}
+
+.star5 {
+    /* Ellipse 94 */
+
+    position: absolute;
+    width: 2.1px;
+    height: 2.1px;
+    left: 82.26px;
+    top: 20.8px;
+
+    /* Green/light_1 */
+    background: #07D571;
+    opacity: 0.95;
+    transform: rotate(22deg);
+
+}
+
+.star6 {
+    /* Ellipse 94 */
+
+    position: absolute;
+    width: 1.62px;
+    height: 1.62px;
+    left: 148.26px;
+    top: 35.8px;
+
+    /* Green/light_1 */
+    background: #07D571;
+    opacity: 0.81;
+    transform: rotate(54deg);
+
+}
+
+.star7 {
+    /* Ellipse 94 */
+
+    position: absolute;
+    width: 2.12px;
+    height: 2.12px;
+    left: 172.26px;
+    top: 4px;
+
+    /* Green/light_1 */
+    background: #07D571;
+    opacity: 0.71;
+    transform: rotate(-76deg);
+
+}
+
+.star8 {
+    /* Ellipse 94 */
+
+    position: absolute;
+    width: 2.4px;
+    height: 2.4px;
+    left: 184.26px;
+    top: 65.6px;
+
+    /* Yellow/Light_1 */
+    background: #FFD175;
+    opacity: 0.91;
+    transform: rotate(-14deg);
+
+}
+
+.star9 {
+    /* Ellipse 94 */
+
+    position: absolute;
+    width: 1.24px;
+    height: 1.24px;
+    left: 196.26px;
+    top: 91.4px;
+
+    /* Green/light_1 */
+    background: #07D571;
+    opacity: 0.78;
+    transform: rotate(118deg);
+
+}
+
+.star10 {
+    /* Ellipse 94 */
+
+    position: absolute;
+    width: 1.24px;
+    height: 1.24px;
+    left: 196.26px;
+    top: 91.4px;
+
+    /* Green/light_1 */
+    background: #07D571;
+    opacity: 0.78;
+    transform: rotate(118deg);
+
 }

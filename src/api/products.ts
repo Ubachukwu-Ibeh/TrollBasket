@@ -1,43 +1,7 @@
 import { IProduct } from "../interfaces/products-interface";
 import getRandom from "../helpers/getRandom";
 
-export const locations = [
-  "Abia",
-  "Adamawa",
-  "Akwa Ibom",
-  "Anambra",
-  "Bauchi",
-  "Bayelsa",
-  "Benue",
-  "Borno",
-  "Cross River",
-  "Delta",
-  "Ebonyi",
-  "Edo",
-  "Ekiti",
-  "Enugu",
-  "Gombe",
-  "Imo",
-  "Jigawa",
-  "Kaduna",
-  "Kano",
-  "Katsina",
-  "Kebbi",
-  "Kogi,",
-  "Kwara",
-  "Lagos",
-  "Nasarawa",
-  "Niger",
-  "Ogun",
-  "Ondo",
-  "Osun",
-  "Oyo",
-  "Plateau",
-  "Rivers",
-  "Sokoto",
-  "Yobe",
-  "Zamfara"
-];
+export const locations = ["Abia", "Ekiti", "Enugu", "Lagos", "Ogun"];
 
 type IAllProducts = Array<IProduct>;
 

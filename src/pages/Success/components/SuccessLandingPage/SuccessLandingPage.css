@@ -1,0 +1,104 @@
+@import url(../../../../css-variables.css);
+
+:root {
+    --ratio: calc(100vw / 4)
+}
+
+.success-main {
+    display: flex;
+    background-color: var(--success-blue);
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    flex-direction: column;
+}
+
+.success-main a {
+    width: 100%;
+    text-decoration: none;
+}
+
+.success-message-content {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    z-index: 2;
+    height: 90vh;
+}
+
+.success-message-content * {
+    margin: auto;
+}
+
+.success-message-content>strong {
+    margin: 0px;
+    font-size: 20pt;
+}
+
+.success-message-content>p {
+    margin-top: 10px;
+}
+
+.success-message-content>p,
+.success-message-content>strong {
+    color: white;
+}
+
+
+.success-icon {
+    z-index: 2;
+    margin: auto;
+    display: flex;
+    width: 40vw;
+    height: 40vw;
+    min-width: 40vw;
+    min-height: 40vw;
+    background-color: #0350BB;
+    border-radius: 50%;
+    margin-bottom: 30px;
+}
+
+.success-icon div {
+    display: flex;
+    width: 25vw;
+    height: 25vw;
+    min-width: 25vw;
+    min-height: 25vw;
+    background-color: #46BCAA;
+    border-radius: 50%;
+    color: white;
+    font-size: 30pt;
+    font-weight: bolder;
+}
+
+.success-icon * {
+    margin: auto;
+}
+
+.success-main button {
+    border: none;
+    background-color: #fff;
+    border-radius: 5px;
+    color: var(--success-blue);
+    height: 50px;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+.success-grid {
+    transform: rotate(10deg);
+    position: absolute;
+    left: -150px;
+    top: -20px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.success-grid svg {
+    opacity: 0.1;
+    margin: auto;
+    width: var(--ratio);
+    height: var(--ratio);
+}
