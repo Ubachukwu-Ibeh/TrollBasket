@@ -20,9 +20,11 @@
     border-radius: 5px;
     display: flex;
 }
-.icon-container *{
+
+.icon-container>* {
     margin: auto;
 }
+
 .navigation-main>div:nth-child(3) {
     display: flex;
 }

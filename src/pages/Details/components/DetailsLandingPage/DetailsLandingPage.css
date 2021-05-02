@@ -7,7 +7,8 @@
     width: 100%;
     height: 50px;
 }
-.notification{
+
+.notification {
     width: 90%;
     height: 35px;
     background-color: var(--notification);
@@ -20,9 +21,11 @@
     left: 5%;
     top: 45px
 }
-.notification *{
+
+.notification * {
     margin: auto;
 }
+
 .detailslandingPage-main {
     width: 100%;
     height: fit-content;
@@ -36,7 +39,6 @@
     padding-top: 50px;
     width: 100%;
     height: 30vh;
-    background-color: var(--background);
     display: flex;
 }
 
@@ -47,12 +49,14 @@
     display: flex;
     background-color: var(--svg-container);
 }
-.product-image-display p{
+
+.product-image-display p {
     margin: auto;
     font-size: 28pt;
     font-weight: bolder;
     color: white;
 }
+
 .section-container {
     margin-top: 5px;
     width: 100%;
@@ -187,4 +191,16 @@ footer button:first-child {
 
 footer button:last-child {
     background-color: transparent;
+}
+
+@keyframes notify {
+    0% {
+        opacity: 0;
+        top: -20px
+    }
+
+    100% {
+        opacity: 1;
+        top: 45px
+    }
 }

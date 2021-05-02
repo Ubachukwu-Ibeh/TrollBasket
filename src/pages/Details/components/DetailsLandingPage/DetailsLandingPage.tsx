@@ -1,61 +1,100 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Navigation from "../Navigation/Navigation";
 import ForwardArrowIcon from "../../../../assets/svg/ForwardArrowIcon";
 import StarOnIcon from "../../../../assets/svg/StarOnIcon";
 import StarOffIcon from "../../../../assets/svg/StarOffIcon";
 import CancelIcon from "../../../../assets/svg/CancelIcon";
-import { useDispatch, createSelectorHook } from "react-redux";
-import * as actionTypes from "../../../../redux/actionTypes/cartActionTypes";
-import {
-  IProduct,
-  IProductStore
-} from "../../../../interfaces/productsInterface";
+import { useDispatch } from "react-redux";
+import * as cartActionTypes from "../../../../redux/actionTypes/cartActionTypes";
+import * as buyLandingPageActionTypes from "../../../../redux/actionTypes/buyLandingPageActionTypes";
+import { IProduct } from "../../../../interfaces/products-interface";
 import { RouteComponentProps } from "react-router-dom";
+import storage, { getSessionStorage } from "../../../../helpers/storage";
+import colors from "../../../../helpers/colors";
 
-const useSelector = createSelectorHook();
+let timeout: NodeJS.Timeout;
 
 const DetailsLandingPage = ({ match }: RouteComponentProps<{ id: string }>) => {
   const dispatch = useDispatch();
-  const state = useSelector(state => state.productsReducer.products);
+
+  const [notify, setNotify] = useState(false);
+  const [cancel, setCancel] = useState(false);
+
+  const product_storage = getSessionStorage(storage.products);
+  const cart_storage = getSessionStorage(storage.cart);
+
+  const notification = useRef<HTMLDivElement>(null);
+
   const {
+    id,
     backgroundColor,
     icon,
     view_description,
     rating,
     name,
-    price
-  } = state.find((item: IProduct) => item.id === match.params.id);
-  //   const addProduct = () => {
-  //     dispatch({
-  //       type: actionTypes.ADD_PRODUCT,
-  //       payload: {
-  //         id,
-  //         price,
-  //         stock,
-  //         backgroundColor,
-  //         description,
-  //         icon
-  //       }
-  //     });
-  //     setIsSelected(!isSelected);
-  //   };
-  //   const removeProduct = () => {
-  //     dispatch({
-  //       type: actionTypes.DELETE_PRODUCT,
-  //       payload: {
-  //         id
-  //       }
-  //     });
-  //     setIsSelected(!isSelected);
-  //   };
+    price,
+    amount
+  } = product_storage.products.find(
+    (item: IProduct) => item.id === match.params.id
+  );
+
+  useEffect(() => {
+    if (!notify) return;
+    const notificationEl = notification.current!;
+    if (cancel) {
+      notificationEl.style.display = "none";
+      notificationEl.style.animation = "none";
+      clearTimeout(timeout);
+      return;
+    }
+    notificationEl.style.display = "flex";
+    notificationEl.style.animation = "notify 0.8s ease";
+    timeout = setTimeout(() => {
+      notificationEl.style.display = "none";
+      clearTimeout(timeout);
+    }, 2000);
+  }, [notify, cancel]);
+
+  const handleCancel = () => {
+    setCancel(true);
+  };
+
+  const hasAdded = cart_storage.cart.find((item: IProduct) => item.id === id);
+
+  const handleNotify = () => {
+    if (notify || hasAdded) return;
+    setNotify(true);
+    dispatch({
+      type: cartActionTypes.ADD_PRODUCT,
+      payload: {
+        id,
+        backgroundColor,
+        icon,
+        view_description,
+        rating,
+        name,
+        price,
+        amount
+      }
+    });
+    dispatch({
+      type: buyLandingPageActionTypes.SET_HAS_CHECKED_NOTIFICATION,
+      payload: false
+    });
+  };
+
   return (
     <div className="detailslandingPage-main">
       <div className="nav-container-details">
         <Navigation />
-        {/* <div className="notification">
+        <div
+          ref={notification}
+          className="notification"
+          onTouchEnd={handleCancel}
+          style={{ display: "none" }}>
           <p>Item added to cart successfully</p>
           <CancelIcon />
-        </div> */}
+        </div>
       </div>
       <div className="product-image-display">
         <div style={{ backgroundColor }}>
@@ -108,7 +147,13 @@ const DetailsLandingPage = ({ match }: RouteComponentProps<{ id: string }>) => {
         </div>
       </div>
       <footer>
-        <button>Add to cart</button>
+        <button
+          onTouchEnd={handleNotify}
+          style={{
+            backgroundColor: notify || hasAdded ? "#ddd" : colors.blue
+          }}>
+          Add to cart
+        </button>
         <button>Wishlist</button>
       </footer>
     </div>

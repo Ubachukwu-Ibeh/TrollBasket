@@ -5,6 +5,8 @@
 @import url(./pages/Buy/components/Product/Product.css);
 @import url(./pages/Details/components/Navigation/Navigation.css);
 @import url(./pages/Details/components/DetailsLandingPage/DetailsLandingPage.css);
+@import url(./pages/Cart/components/Item/Item.css);
+@import url(./pages/Cart/components/CartLandingPage/CartLandingPage.css);
 
 .App {
   text-align: center;

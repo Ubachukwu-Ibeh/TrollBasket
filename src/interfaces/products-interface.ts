@@ -13,4 +13,5 @@ export interface IProduct {
 
 export interface IProductStore {
   products: Array<IProduct>;
+  recently_viewed: Array<IProduct>;
 }

@@ -18,16 +18,18 @@ import Options from "../Options/Options";
 import colors from "../../../../helpers/colors";
 import { generateProducts } from "../../../../api/products";
 import Product from "../Product/Product";
-import { IProduct } from "../../../../interfaces/productsInterface";
+import { IProduct } from "../../../../interfaces/products-interface";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import * as productActionTypes from "../../../../redux/actionTypes/productActionTypes";
 import { createSelectorHook } from "react-redux";
-import { getSessionStorage } from "../../../../helpers/storage";
+import storage, { getSessionStorage } from "../../../../helpers/storage";
+import { Routes } from "../../../../Routes";
 
 export const LocationContext = React.createContext<
   React.Dispatch<React.SetStateAction<Array<IProduct>>> | undefined
 >(undefined);
+
 const useSelector = createSelectorHook();
 
 const BuyLandingPage = () => {
@@ -39,8 +41,8 @@ const BuyLandingPage = () => {
     state => state.buyLandingPageReducer.selectedLocation
   );
 
+  const products_storage = getSessionStorage(storage.products);
   const dispatch = useDispatch();
-  const storage = getSessionStorage("storage");
 
   //Initialize UI fixes and stores
   useEffect(() => {
@@ -64,8 +66,8 @@ const BuyLandingPage = () => {
       });
     };
 
-    if (storage) {
-      setProducts([...storage.products]);
+    if (products_storage.products.length !== 0) {
+      setProducts([...products_storage.products]);
     } else {
       const products = generateProducts();
       products.forEach(product => {
@@ -73,16 +75,18 @@ const BuyLandingPage = () => {
       });
       setProducts(products);
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   //Handles search
   const updateQuery = (str: string) => {
     if (str.length === 0) {
-      setProducts([...storage.products]);
+      setProducts([...products_storage.products]);
       return;
     }
-    const filtered = products.filter(
-      product =>
+    const filtered = products_storage.products.filter(
+      (product: IProduct) =>
         product.name?.slice(0, str.length).toLowerCase() === str.toLowerCase()
     );
     setProducts([...filtered]);
@@ -103,7 +107,9 @@ const BuyLandingPage = () => {
             />
           </LocationContext.Provider>
           <NavItem text="My Orders" svg={<MyOrdersIcon />} />
-          <NavItem text="Cart" svg={<CartIcon />} />
+          <Link to={Routes.Cart}>
+            <NavItem text="Cart" svg={<CartIcon />} type="cart" />
+          </Link>
         </nav>
       </div>
       <div ref={search} className="search-bar">

@@ -1,6 +1,6 @@
-import { IProduct } from "./productsInterface";
+import { IProduct } from "./products-interface";
 
 export interface IAction {
   type: string;
-  payload?: any;
+  payload?: IProduct | string | boolean;
 }

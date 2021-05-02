@@ -1,4 +1,4 @@
-import { IProduct } from "../interfaces/productsInterface";
+import { IProduct } from "../interfaces/products-interface";
 import getRandom from "../helpers/getRandom";
 
 export const locations = [
@@ -73,12 +73,13 @@ export const generateProducts = (): IAllProducts => {
       price: getPriceRange(),
       location: locations[getRandom(0, locations.length)],
       stock: getRandom(1, 50),
-      backgroundColor: `rgb(${getRandom(100, 255)},${getRandom(
-        100,
-        255
-      )},${getRandom(100, 255)})`,
+      backgroundColor: `rgb(${getRandom(0, 200)},${getRandom(
+        0,
+        200
+      )},${getRandom(0, 200)})`,
       icon: product.charAt(0),
-      rating: getRandom(1, 5)
+      rating: getRandom(1, 5),
+      amount: 1
     });
   });
 

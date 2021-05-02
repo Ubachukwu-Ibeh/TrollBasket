@@ -1,1 +1,2 @@
 export const SET_PRODUCT = "SET_PRODUCT";
+export const ADD_RECENT_PRODUCT = "ADD_RECENT_PRODUCT";

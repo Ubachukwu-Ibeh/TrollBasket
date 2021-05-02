@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import { locations } from "../../../../api/products";
 import DropDownArrow from "../../../../assets/svg/DropDownArrow";
 import { useDispatch } from "react-redux";
-import * as buyLandingPageTypes from "../../../../redux/actionTypes/buyLandingPageTypes";
+import * as buyLandingPageActionTypes from "../../../../redux/actionTypes/buyLandingPageActionTypes";
 import { LocationContext } from "../BuyLandingPage/BuyLandingPage";
-import { getSessionStorage } from "../../../../helpers/storage";
+import storage, { getSessionStorage } from "../../../../helpers/storage";
+import CartNotification from "../CartNotification/CartNotification";
 
 const NavItem: React.FC<{
   text: string;
@@ -47,12 +48,12 @@ const NavItem: React.FC<{
 
   const updateLocation = (str: string) => {
     dispatch({
-      type: buyLandingPageTypes.CHANGE_LOCATION,
+      type: buyLandingPageActionTypes.CHANGE_LOCATION,
       payload: str
     });
     if (str === "All") {
-      const storage = getSessionStorage("storage");
-      setProducts!([...storage.products]);
+      const products_storage = getSessionStorage(storage.products);
+      setProducts!([...products_storage.products]);
     } else {
       setProducts!(prev => prev.filter(product => product.location === str));
     }
@@ -91,7 +92,20 @@ const NavItem: React.FC<{
       <div
         className="svg-container"
         style={type === "drop-down" ? { marginLeft: "0px" } : undefined}>
-        {svg}
+        {type === "cart" ? (
+          <CartNotification svg={svg} />
+        ) : (
+          <>
+            {svg}
+            <div className="cart-notification-container">
+              {type === "cart" && (
+                <div className="cart-notification">
+                  <p>6</p>
+                </div>
+              )}
+            </div>
+          </>
+        )}
       </div>
 
       <p>{text}</p>

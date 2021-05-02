@@ -1,6 +1,8 @@
-import { ICartStore } from "../../interfaces/cartInterface";
+import { ICartStore } from "../../interfaces/cart-interface";
+import storage, { setSessionStorage } from "../../helpers/storage";
 
-const cartStore: ICartStore = {
+export const cartStore: ICartStore = {
   cart: []
 };
-export default cartStore;
+
+setSessionStorage(storage.cart, cartStore);
